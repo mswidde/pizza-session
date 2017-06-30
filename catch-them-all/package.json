@@ -1,0 +1,15 @@
+{
+  "name": "catch-them-all",
+  "dependencies":
+  {
+    "express": "latest",
+    "request": "latest",
+    "async": "latest",
+    "pug": "latest"
+  },
+  "scripts": 
+  {
+    "start": "node init.js"
+  },
+  "main": "init.js"
+}

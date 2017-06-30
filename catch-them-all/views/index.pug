@@ -1,0 +1,47 @@
+html
+  head
+    meta(http-equiv="refresh",content="5")
+    link(href="static/bootstrap/css/bootstrap.min.css",rel="stylesheet")
+    link(href="static/bootstrap/css/bootstrap-theme.min.css",rel="stylesheet")
+    link(href="static/catch-them-all.css",rel="stylesheet")
+    title= title
+  body
+    div.jumbotron
+      div.container
+        div.col-md-3
+          img(src="static/ash.png" alt="ash" class="img-rounded img-responsive" width="50%" height="50%")
+          //----img(src="static/team_rocket.png" alt="ash" class="img-rounded img-responsive")
+        div.col-md-9
+          h1 #{app}
+          p
+            | Running on pod <strong> #{node} </strong> <br>
+            | Project <strong> #{nameSpace} </strong>
+
+    div.container-fluid
+      div(class="row")
+        -
+          var n = 1
+          var columnWidth = "3"
+          var podsLength = pods.length
+          var pokeCSS = "pokeMax"
+         // if ( podsLength < 4 ) {
+         //   columnWidth = 12 / podsLength
+         //   pokeCSS = ""
+         // }
+        each pod in pods
+          div(class="col-md-" + columnWidth )
+            a(href="#" class="thumbnail")
+              //img(class="" + pokeCSS src="http://pokemon-service-pizza-session.apps.ota.ose.rabobank.nl/?pod=" + pod.metadata.name alt="pokemon")
+              img(class="" + pokeCSS src=pokemonService + "/?pod=" + pod.metadata.name alt="pokemon")
+              // img(class="" + pokeCSS src="pokemon?pokemonid=" + n++ alt="pokemon")
+              div.caption
+                h4 #{pod.metadata.name}
+                case pod.metadata.name
+                  when node
+                    p
+                      img(src="static/pokeball.gif" alt="pokeball" width="7%")
+                      | #{pod.spec.host}
+                  default
+                    p #{pod.spec.host}
+                    div.row
+                      p

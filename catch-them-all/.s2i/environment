@@ -1,0 +1,3 @@
+OSE_MASTER=https://ose-master-api.linux.rabobank.nl:8443
+POKEMON_SERVICE=http://pokemon-service-pizza-session.apps.ota.ose.rabobank.nl
+
